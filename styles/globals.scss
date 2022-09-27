@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .contactInp {
+    @apply transition-all outline-none bg-neutral-300/10 px-3 py-2 md:px-6 md:py-4 text-xs sm:text-sm md:text-base rounded-sm border-b border-transparent hover:border-red-500/75 focus:border-red-500/75 placeholder:text-neutral-400/50 text-neutral-100/50 focus:text-neutral-200;
+  }
+}
