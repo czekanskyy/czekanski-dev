@@ -45,6 +45,8 @@ const Hero = (props: Props) => {
             fgColor='#B3B3B3'
             bgColor='transparent'
             className='rounded-full transition-all hover:bg-neutral-300/5'
+            target='_blank'
+            rel='noreferrer noopener'
           />
         ))}
         <hr className='w-8 border border-gray-500 my-4 sm:my-8 mx-auto' />

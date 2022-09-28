@@ -34,6 +34,8 @@ export interface PageData extends SanityBody {
   email: string;
   heroImage: Image;
   profilePic: Image;
+  resumePL: string;
+  resumeEN: string;
   resumes: File[];
   socials: Social[];
 }

@@ -13,6 +13,7 @@ import { fetchProjects } from '../utils/fetchProjects';
 import { fetchSkills } from '../utils/fetchSkills';
 import { fetchSocials } from '../utils/fetchSocials';
 import ScrollButton from '../components/ScrollButton';
+import { FaGithub } from 'react-icons/fa';
 
 type Props = {
   pageData: PageData;
@@ -79,6 +80,22 @@ const Home = ({ pageData, projects, skills, socials }: Props) => {
       <div ref={scrollButton}>
         <ScrollButton heroSect={sections.hero} visible={scrollVisible} />
       </div>
+
+      <footer className='bg-neutral-900 snap-center flex items-center justify-between p-8 text-xs sm:text-sm md:text-base'>
+        &copy; {new Date().getFullYear()} Dominik Czekański
+        <span className='flex gap-x-5'>
+          Made with 💟 & Next.js
+          <a
+            href='https://github.com/czekanskyy/czekanski-dev'
+            target='_blank'
+            rel='noreferrer noopener'
+            className='flex items-center gap-x-2 text-red-500 font-medium'
+          >
+            <FaGithub />
+            source code
+          </a>
+        </span>
+      </footer>
     </div>
   );
 };
@@ -98,6 +115,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       socials,
     },
-    revalidate: 3600,
+    revalidate: 600,
   };
 };

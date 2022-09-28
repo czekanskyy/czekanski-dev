@@ -4,7 +4,11 @@ import { sanityClient } from '../../sanity';
 import { PageData } from '../../typing';
 
 const query = groq`
-	*[_type == "pageData"][0]
+	*[_type == "pageData"][0] {
+		...,
+		"resumeEN": resumes[0].asset->url,
+		"resumePL": resumes[1].asset->url
+	}
 `;
 
 type Data = {

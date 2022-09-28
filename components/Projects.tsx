@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Project } from '../typing';
 import { urlFor } from '../sanity';
 import Image from 'next/future/image';
+import { SocialIcon } from 'react-social-icons';
 
 type Props = {
   projects: Project[];
@@ -23,12 +24,31 @@ const Projects = ({ projects }: Props) => {
             <div className='space-y-4 sm:space-y-10 px-0 md:px-10 max-w-6xl'>
               <h3 className='text-xl sm:text-2xl md:text-4xl font-semibold text-center'>{proj?.title}</h3>
 
-              <p className='flex justify-center gap-x-4'>
+              <div className='flex items-center justify-center gap-x-4 relative'>
                 {proj?.technologies.map(tech => (
-                  <img key={tech?._id} src={urlFor(tech?.icon).url()} alt={tech?.title} className='h-8' />
+                  <Image key={tech?._id} src={urlFor(tech?.icon).url()} alt={tech?.title} width={32} height={32} className='w-8 h-8' />
                 ))}
-              </p>
-
+                <p className='w-2'></p>
+                <SocialIcon
+                  fgColor='#B3B3B3'
+                  bgColor='transparent'
+                  className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
+                  url={proj?.gitLink}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                />
+                {proj?.buildLink ? (
+                  <SocialIcon
+                    fgColor='#B3B3B3'
+                    bgColor='transparent'
+                    className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
+                    url={proj?.buildLink}
+                    target='_blank'
+                    rel='noreferrer noopener'
+                    label='View on-line page'
+                  />
+                ) : null}
+              </div>
               <p className='text-xs sm:text-base md:text-lg text-center md:text-left text-neutral-100 font-light'>{proj?.desc}</p>
             </div>
           </article>

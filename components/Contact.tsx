@@ -82,13 +82,13 @@ const Contact = ({ pageData }: Props) => {
           </span>
           <span className='text-base sm:text-xl md:text-2xl mr-2'>My resume</span>
           <div>
-            <a href='/Resume-PL_Dominik_Czekański.pdf' download className='flex text-sm items-center gap-x-1 text-neutral-400'>
-              <FaDownload />
-              EN
-            </a>
-            <a href='/Resume-PL_Dominik_Czekański.pdf' download className='flex text-sm items-center gap-x-1 text-neutral-400'>
+            <a href={pageData?.resumeEN} download className='flex text-sm items-center gap-x-1 text-neutral-400'>
               <FaDownload />
               PL
+            </a>
+            <a href={pageData?.resumePL} download className='flex text-sm items-center gap-x-1 text-neutral-400'>
+              <FaDownload />
+              EN
             </a>
           </div>
         </span>
