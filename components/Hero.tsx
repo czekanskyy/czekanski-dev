@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { SocialIcon } from 'react-social-icons';
 import { PageData, Social } from '../typing';
 import { urlFor } from '../sanity';
+import Image from 'next/future/image';
 
 type Props = {
   socials: Social[];
@@ -53,13 +54,13 @@ const Hero = (props: Props) => {
             fgColor='#B3B3B3'
             bgColor='transparent'
             className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
-            href='#contact'
-            aria-label='contact me'
+            url='#contact'
+            label='contact me'
           />
         </button>
       </motion.div>
 
-      <motion.img
+      <motion.div
         initial={{
           opacity: 0,
         }}
@@ -67,10 +68,10 @@ const Hero = (props: Props) => {
           opacity: 1,
         }}
         transition={{ duration: 0.75, delay: 2 }}
-        src={urlFor(props.pageData?.heroImage).url()}
-        alt='A picture of me'
-        className='z-50 h-36 w-36 rounded-full grayscale-[30%] sepia-[10%]'
-      />
+        className='z-50 h-36 w-36 rounded-full overflow-hidden relative'
+      >
+        <Image src={urlFor(props.pageData?.heroImage).url()} alt='A picture of me' width={144} height={144} priority />
+      </motion.div>
 
       <motion.h1
         initial={{ opacity: 0 }}

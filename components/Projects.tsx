@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../typing';
 import { urlFor } from '../sanity';
+import Image from 'next/future/image';
 
 type Props = {
   projects: Project[];
@@ -15,15 +16,9 @@ const Projects = ({ projects }: Props) => {
       <div className='relative w-full flex overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-neutral-500/25 scrollbar-thumb-red-500/75 snap-x snap-mandatory z-20'>
         {projects?.map(proj => (
           <article key={proj?._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-12 p-20 md:p-44 justify-center items-center h-screen'>
-            <motion.img
-              initial={{ opacity: 0, y: -200 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              src={urlFor(proj?.image).url()}
-              alt={proj?.title}
-              width={653}
-              height={481}
-            />
+            <motion.div initial={{ opacity: 0, y: -200 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+              <Image src={urlFor(proj?.image).url()} alt={proj?.title} width={640} height={480} />
+            </motion.div>
 
             <div className='space-y-4 sm:space-y-10 px-0 md:px-10 max-w-6xl'>
               <h3 className='text-xl sm:text-2xl md:text-4xl font-semibold text-center'>{proj?.title}</h3>

@@ -48,9 +48,10 @@ const Home = ({ pageData, projects, skills, socials }: Props) => {
       <Head>
         <title>Dominik Czekański</title>
         <meta name='description' content='Hi, my name is Dominik, and I am a web developer from Poland.' />
-        <link rel='shortcut icon' href='/logo.webp' type='image/webp' />
+        <link rel='shortcut icon' href='/favicon.ico' />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
         <meta name='theme-color' content='#262626' />
+        <link rel='manifest' href='/manifest.json' />
       </Head>
 
       <Header sections={sections} />

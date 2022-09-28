@@ -8,9 +8,15 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/logo.webp",
+      "src": "/logo_128.webp",
       "type": "image/webp",
       "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo_192.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
       "purpose": "any"
     },
     {

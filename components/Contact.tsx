@@ -59,7 +59,7 @@ const Contact = ({ pageData }: Props) => {
     <div className='h-screen flex flex-col items-center justify-center relative gap-y-6 sm-gap-y-8 md:gap-y-12'>
       <h2 className='absolute top-16 text-3xl tracking-[0.3em] text-neutral-500'>CONTACT</h2>
 
-      <h4 className='text-2xl md:text-3xl font-medium'>Want to know more?</h4>
+      <h3 className='text-2xl md:text-3xl font-medium'>Want to know more?</h3>
 
       <div className='flex flex-col gap-y-3 sm:gap-y-5 md:gap-y-6 items-center'>
         <p className='flex gap-x-2 items-center'>
