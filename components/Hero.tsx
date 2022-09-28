@@ -38,11 +38,24 @@ const Hero = (props: Props) => {
         }}
       >
         {props.socials?.map(social => (
-          <SocialIcon key={social?._id} url={social?.url} fgColor='gray' bgColor='transparent' className='rounded-full transition-all hover:bg-neutral-300/5' />
+          <SocialIcon
+            key={social?._id}
+            url={social?.url}
+            fgColor='#B3B3B3'
+            bgColor='transparent'
+            className='rounded-full transition-all hover:bg-neutral-300/5'
+          />
         ))}
         <hr className='w-8 border border-gray-500 my-4 sm:my-8 mx-auto' />
         <button onClick={e => props.contact?.current?.scrollIntoView({ behavior: 'smooth' })}>
-          <SocialIcon network='email' fgColor='gray' bgColor='transparent' className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5' />
+          <SocialIcon
+            network='email'
+            fgColor='#B3B3B3'
+            bgColor='transparent'
+            className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
+            href='#contact'
+            aria-label='contact me'
+          />
         </button>
       </motion.div>
 
@@ -55,6 +68,7 @@ const Hero = (props: Props) => {
         }}
         transition={{ duration: 0.75, delay: 2 }}
         src={urlFor(props.pageData?.heroImage).url()}
+        alt='A picture of me'
         className='z-50 h-36 w-36 rounded-full grayscale-[30%] sepia-[10%]'
       />
 
@@ -64,7 +78,8 @@ const Hero = (props: Props) => {
         transition={{ duration: 1, delay: 2 }}
         className='text-2xl sm:text-3xl md:text-5xl font-medium select-none z-40 absolute flex flex-col items-center gap-y-48'
       >
-        <p className='uppercase tracking-[0.75em] text-xs sm:text-sm md:text-base text-gray-300/50 md:text-gray-500/50 -mb-20 md:-mb-12'>web developer</p>
+        <p className='hidden'>Dominik Czekański</p>
+        <p className='uppercase tracking-[0.75em] text-xs sm:text-sm md:text-base text-[#B3B3B3] -mb-20 md:-mb-12'>web developer</p>
         <span className='mt-16'>
           {text}
           <Cursor cursorColor='rgb(239, 68, 68)' />

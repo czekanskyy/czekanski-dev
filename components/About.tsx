@@ -35,9 +35,9 @@ const About = ({ pageData }: Props) => {
         className='-mb-28 sm:-mb-48 md:mb-0 flex-shrink-0 w-36 h-36 sm:w-56 sm:h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[500px] xl:h-[600px]'
       />
       <article className='space-y-4 sm:space-y-10 px-0 md:px-10'>
-        <h4 className='text-2xl sm:text-3xl md:text-4xl font-medium'>
+        <h3 className='text-2xl sm:text-3xl md:text-4xl font-medium'>
           A <span className='underline decoration-red-500/50 underline-offset-2'>few</span> words about me
-        </h4>
+        </h3>
         <p className='text-xs sm:text-sm md:text-base'>{pageData?.aboutMe}</p>
       </article>
     </div>

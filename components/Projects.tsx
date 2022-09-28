@@ -14,7 +14,7 @@ const Projects = ({ projects }: Props) => {
 
       <div className='relative w-full flex overflow-x-scroll overflow-y-hidden scrollbar-thin scrollbar-track-neutral-500/25 scrollbar-thumb-red-500/75 snap-x snap-mandatory z-20'>
         {projects?.map(proj => (
-          <div key={proj?._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-12 p-20 md:p-44 justify-center items-center h-screen'>
+          <article key={proj?._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-12 p-20 md:p-44 justify-center items-center h-screen'>
             <motion.img
               initial={{ opacity: 0, y: -200 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ const Projects = ({ projects }: Props) => {
             />
 
             <div className='space-y-4 sm:space-y-10 px-0 md:px-10 max-w-6xl'>
-              <h4 className='text-xl sm:text-2xl md:text-4xl font-semibold text-center'>{proj?.title}</h4>
+              <h3 className='text-xl sm:text-2xl md:text-4xl font-semibold text-center'>{proj?.title}</h3>
 
               <p className='flex justify-center gap-x-4'>
                 {proj?.technologies.map(tech => (
@@ -36,7 +36,7 @@ const Projects = ({ projects }: Props) => {
 
               <p className='text-xs sm:text-base md:text-lg text-center md:text-left text-neutral-100 font-light'>{proj?.desc}</p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 

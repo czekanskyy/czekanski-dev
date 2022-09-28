@@ -48,22 +48,24 @@ const Home = ({ pageData, projects, skills, socials }: Props) => {
       <Head>
         <title>Dominik Czekański</title>
         <meta name='description' content='Hi, my name is Dominik, and I am a web developer from Poland.' />
-        <link rel='shortcut icon' href='/favicon.webp' type='image/webp' />
+        <link rel='shortcut icon' href='/logo.webp' type='image/webp' />
+        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <meta name='theme-color' content='#262626' />
       </Head>
 
       <Header sections={sections} />
 
-      <section ref={sections.hero} id='hero' className='snap-center'>
+      <header ref={sections.hero} id='hero' className='snap-center'>
         <Hero socials={socials} pageData={pageData} contact={sections.contact} />
-      </section>
+      </header>
 
-      <section ref={sections.about} id='about' className='snap-center'>
+      <main ref={sections.about} id='about' className='snap-center'>
         <About pageData={pageData} />
-      </section>
+      </main>
 
-      <section ref={sections.projects} id='projects' className='snap-center'>
+      <article ref={sections.projects} id='projects' className='snap-center'>
         <Projects projects={projects} />
-      </section>
+      </article>
 
       <section ref={sections.skills} id='skills' className='snap-center'>
         <Skills skills={skills} />
