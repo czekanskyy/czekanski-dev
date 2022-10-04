@@ -6,14 +6,16 @@ import { SocialIcon } from 'react-social-icons';
 import { PageData, Social } from '../typing';
 import { urlFor } from '../sanity';
 import Image from 'next/future/image';
+import { NextComponentType, NextPageContext } from 'next';
 
-type Props = {
+interface Props {
   socials: Social[];
   pageData: PageData;
   contact: React.RefObject<HTMLElement>;
-};
+}
 
-const Hero = (props: Props) => {
+const Hero: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
+  // Typewriter config
   const [text, count] = useTypewriter({
     words: ["Hi, I'm Dominik", '<a-man-who-loves-to-code />', 'andToLearnNewThings()'],
     loop: true,
@@ -21,7 +23,10 @@ const Hero = (props: Props) => {
   });
 
   return (
-    <div className='h-screen flex flex-col items-center justify-center text-center relative overflow-hidden z-10 gap-y-8'>
+    <header
+      id='hero'
+      className='h-screen flex flex-col items-center justify-center text-center relative overflow-hidden z-10 gap-y-8 snap-center'
+    >
       <motion.div
         className='flex flex-col w-10 items-center absolute md:fixed left-0 top-0 mx-2 sm:py-2 z-50'
         initial={{
@@ -38,6 +43,7 @@ const Hero = (props: Props) => {
           duration: 1,
         }}
       >
+        {/* Links to social media */}
         {props.socials?.map(social => (
           <SocialIcon
             key={social?._id}
@@ -50,16 +56,18 @@ const Hero = (props: Props) => {
           />
         ))}
         <hr className='w-8 border border-gray-500 my-4 sm:my-8 mx-auto' />
-        <button onClick={e => props.contact?.current?.scrollIntoView({ behavior: 'smooth' })}>
-          <SocialIcon
-            network='email'
-            fgColor='#B3B3B3'
-            bgColor='transparent'
-            className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
-            url='#contact'
-            label='contact me'
-          />
-        </button>
+        <SocialIcon
+          network='email'
+          fgColor='#B3B3B3'
+          bgColor='transparent'
+          className='cursor-pointer rounded-full transition-all hover:bg-neutral-300/5'
+          url='#contact'
+          label='contact me'
+          onClick={e => {
+            e.preventDefault();
+            document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
       </motion.div>
 
       <motion.div
@@ -72,7 +80,13 @@ const Hero = (props: Props) => {
         transition={{ duration: 0.75, delay: 2 }}
         className='z-50 h-36 w-36 rounded-full overflow-hidden relative'
       >
-        <Image src={urlFor(props.pageData?.heroImage).url()} alt='A picture of me' width={144} height={144} priority />
+        <Image
+          src={urlFor(props.pageData?.heroImage).url()}
+          alt='A picture of me'
+          width={144}
+          height={144}
+          priority
+        />
       </motion.div>
 
       <motion.h1
@@ -106,7 +120,7 @@ const Hero = (props: Props) => {
       >
         <Circle />
       </motion.div>
-    </div>
+    </header>
   );
 };
 

@@ -48,38 +48,57 @@ const Home = ({ pageData, projects, skills, socials }: Props) => {
     >
       <Head>
         <title>Dominik Czekański</title>
-        <meta name='description' content='Hi, my name is Dominik, and I am a web developer from Poland.' />
-        <link rel='shortcut icon' href='/favicon.ico' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
-        <meta name='theme-color' content='#262626' />
-        <link rel='manifest' href='/manifest.json' />
+
+        {/* SEO METATAGS */}
+        <meta
+          name='author'
+          content='Dominik Czekański'
+        />
+        <meta
+          name='description'
+          content='Hi, my name is Dominik, and I am a web developer from Poland.'
+        />
+        <meta
+          name='keywords'
+          content='dominik czekański czekanski czekanskyy czekanski.dev dev developer'
+        />
+
+        {/* PWA METATAGS */}
+        <link
+          rel='shortcut icon'
+          href='/favicon.ico'
+        />
+        <link
+          rel='apple-touch-icon'
+          href='/apple-touch-icon.png'
+        />
+        <meta
+          name='theme-color'
+          content='#262626'
+        />
+        <link
+          rel='manifest'
+          href='/manifest.json'
+        />
       </Head>
 
-      <Header sections={sections} />
+      <Header />
 
-      <header ref={sections.hero} id='hero' className='snap-center'>
-        <Hero socials={socials} pageData={pageData} contact={sections.contact} />
-      </header>
+      <Hero
+        socials={socials}
+        pageData={pageData}
+        contact={sections.contact}
+      />
 
-      <main ref={sections.about} id='about' className='snap-center'>
-        <About pageData={pageData} />
-      </main>
+      <About pageData={pageData} />
 
-      <article ref={sections.projects} id='projects' className='snap-center'>
-        <Projects projects={projects} />
-      </article>
+      <Projects projects={projects} />
 
-      <section ref={sections.skills} id='skills' className='snap-center'>
-        <Skills skills={skills} />
-      </section>
+      <Skills skills={skills} />
 
-      <section ref={sections.contact} id='contact' className='snap-center'>
-        <Contact pageData={pageData} />
-      </section>
+      <Contact pageData={pageData} />
 
-      <div ref={scrollButton}>
-        <ScrollButton heroSect={sections.hero} visible={scrollVisible} />
-      </div>
+      <ScrollButton visible={scrollVisible} />
 
       <footer className='bg-neutral-900 snap-center flex items-center justify-between p-8 text-xs sm:text-sm md:text-base'>
         &copy; {new Date().getFullYear()} Dominik Czekański

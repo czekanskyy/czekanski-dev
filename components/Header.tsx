@@ -1,78 +1,45 @@
 import React from 'react';
 
 import { motion } from 'framer-motion';
+import { NextComponentType, NextPageContext } from 'next';
 
-type Props = {
-  sections: {
-    hero?: React.RefObject<HTMLElement>;
-    about: React.RefObject<HTMLElement>;
-    projects: React.RefObject<HTMLElement>;
-    skills: React.RefObject<HTMLElement>;
-    contact: React.RefObject<HTMLElement>;
-  };
-};
+interface Props {}
 
-const Header = (props: Props) => {
+const Header: NextComponentType<NextPageContext, {}, Props> = (props: Props) => {
+  const sections = ['about', 'projects', 'skills', 'contact'];
+
   return (
-    <nav>
-      <motion.div
-        className='flex items-center absolute top-0 right-0 z-50 p-2 sm:p-4 md:mx-6 gap-x-2 md:gap-x-4 text-[#B3B3B3] font-bold text-xs sm:text-sm md:text-base xl:text-lg'
-        initial={{
-          y: -500,
-          opacity: 0,
-          scale: 0.5,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          scale: 1,
-        }}
-        transition={{
-          duration: 1,
-          delay: 0.5,
-        }}
-      >
+    <motion.nav
+      className='flex items-center absolute top-0 right-0 z-50 p-2 sm:p-4 md:mx-6 gap-x-3 md:gap-x-6 text-[#B3B3B3] font-bold text-xs sm:text-sm md:text-base xl:text-lg select-none'
+      initial={{
+        y: -500,
+        opacity: 0,
+        scale: 0.5,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        scale: 1,
+      }}
+      transition={{
+        duration: 1,
+        delay: 0.5,
+      }}
+    >
+      {sections.map(sect => (
         <a
-          href='#about'
+          key={sect}
+          href={`#${sect}`}
+          className='uppercase transition-all hover:text-neutral-200 cursor-pointer'
           onClick={e => {
             e.preventDefault();
-            props.sections.about.current?.scrollIntoView({ behavior: 'smooth' });
+            document.querySelector(e.currentTarget.getAttribute('href')!)?.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          <span className='transition-all hover:text-neutral-200 cursor-pointer'>ABOUT</span>
+          {sect}
         </a>
-        <span className='text-red-500/50'>|</span>
-        <a
-          href='#projects'
-          onClick={e => {
-            e.preventDefault();
-            props.sections.projects.current?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <span className='transition-all hover:text-neutral-200 cursor-pointer'>PROJECTS</span>
-        </a>
-        <span className='text-red-500/50'>|</span>
-        <a
-          href='#skills'
-          onClick={e => {
-            e.preventDefault();
-            props.sections.skills.current?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <span className='transition-all hover:text-neutral-200 cursor-pointer'>SKILLS</span>
-        </a>
-        <span className='text-red-500/50'>|</span>
-        <a
-          href='#contact'
-          onClick={e => {
-            e.preventDefault();
-            props.sections.contact.current?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <span className='transition-all hover:text-neutral-200 cursor-pointer'>CONTACT</span>
-        </a>
-      </motion.div>
-    </nav>
+      ))}
+    </motion.nav>
   );
 };
 

@@ -4,14 +4,18 @@ import { PageData } from '../typing';
 import { urlFor } from '../sanity';
 import { isMobile } from 'react-device-detect';
 import Image from 'next/future/image';
+import { NextComponentType, NextPageContext } from 'next';
 
-type Props = {
+interface Props {
   pageData: PageData;
-};
+}
 
-const About = ({ pageData }: Props) => {
+const About: NextComponentType<NextPageContext, {}, Props> = ({ pageData }: Props) => {
   return (
-    <div className='h-screen flex flex-col md:flex-row items-center justify-evenly text-center md:text-left md:max-w-7xl w-full mx-auto px-10 relative'>
+    <main
+      id='about'
+      className='h-screen flex flex-col md:flex-row items-center justify-evenly text-center md:text-left md:max-w-7xl w-full mx-auto px-10 relative snap-center'
+    >
       <h2 className='absolute top-16 text-3xl tracking-[0.3em] text-neutral-500'>ABOUT</h2>
       <motion.div
         initial={{
@@ -47,7 +51,7 @@ const About = ({ pageData }: Props) => {
         </h3>
         <p className='text-xs sm:text-sm md:text-base'>{pageData?.aboutMe}</p>
       </article>
-    </div>
+    </main>
   );
 };
 
